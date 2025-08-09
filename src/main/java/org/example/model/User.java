@@ -44,6 +44,15 @@ public class User {
     @Column(name = "is_active", nullable = false)
     private Boolean isActive = true;
     
+    @Column(name = "college")
+    private String college = "";
+    
+    @Column(name = "metadata")
+    private String metadata = "{}";
+    
+    @Column(name = "gender")
+    private String gender = "";
+    
     public User(String name, String email, String phone, String password) {
         this.name = name;
         this.email = email;

@@ -14,19 +14,30 @@ import jakarta.validation.constraints.Size;
 @AllArgsConstructor
 public class SignupRequest {
     
-    @NotBlank(message = "Name is required")
-    @Size(min = 2, max = 100, message = "Name must be between 2 and 100 characters")
-    private String name;
+    @NotBlank(message = "Username is required")
+    @Size(min = 2, max = 50, message = "Username must be between 2 and 50 characters")
+    private String username;
+    
+    @NotBlank(message = "First name is required")
+    @Size(min = 1, max = 50, message = "First name must be between 1 and 50 characters")
+    private String firstName;
+    
+    @NotBlank(message = "Last name is required")
+    @Size(min = 1, max = 50, message = "Last name must be between 1 and 50 characters")
+    private String lastName;
     
     @NotBlank(message = "Email is required")
     @Email(message = "Invalid email format")
     private String email;
     
-    @NotBlank(message = "Phone number is required")
-    @Pattern(regexp = "^\\d{10}$", message = "Phone number must be 10 digits")
+    @Pattern(regexp = "^\\d{10}$|^$", message = "Phone number must be 10 digits")
     private String phone;
     
     @NotBlank(message = "Password is required")
     @Size(min = 6, max = 100, message = "Password must be between 6 and 100 characters")
     private String password;
+    
+    public String getFullName() {
+        return firstName + " " + lastName;
+    }
 } 
